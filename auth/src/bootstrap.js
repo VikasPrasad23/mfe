@@ -6,7 +6,6 @@ import { createMemoryHistory, createBrowserHistory } from 'history';
 //Mount function to start up the app
 const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
     //defaultHistory only avaialble in development mode
-    //the memory history has an initial value of "/". Therefore using "initialPath" as a 3rd argument to set an initial value
     const history = defaultHistory || createMemoryHistory({
         initialEntries: [initialPath],
     });
@@ -33,7 +32,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
 //call mount immediately
 
 if (process.env.NODE_ENV === 'development') {
-    const devRoot = document.querySelector('#_marketing-dev-root');
+    const devRoot = document.querySelector('#_auth-dev-root');
 
     if(devRoot) {
         //the 2nd argument is to prevent the undefined error for 'onNavigate'property in App.js
