@@ -4,7 +4,7 @@ import App from './App';
 import { createMemoryHistory, createBrowserHistory } from 'history';
 
 //Mount function to start up the app
-const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+const mount = (el, { onSignIn, onNavigate, defaultHistory, initialPath }) => {
     //defaultHistory only avaialble in development mode
     const history = defaultHistory || createMemoryHistory({
         initialEntries: [initialPath],
@@ -14,7 +14,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
         history.listen(onNavigate);
     }
 
-    ReactDOM.render(<App history={history} />, el);
+    ReactDOM.render(<App onSignIn={onSignIn} history={history} />, el);
 
     //add a function for the container (host App) to communicate/update the child App
     return {

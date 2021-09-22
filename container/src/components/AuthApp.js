@@ -3,7 +3,7 @@ import React, {useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 //framework agnostic
-export default() => {
+export default( { onSignIn }) => {
     const ref = useRef(null);
     //this history object is a copy of current browser history
     const history = useHistory();
@@ -17,6 +17,9 @@ export default() => {
                 if(pathname !== nextPathname) {
                     history.push(nextPathname);
                 }
+            },
+            onSignIn: () => {
+                onSignIn();
             }
         });
         history.listen(onParentNavigate);
